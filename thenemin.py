@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import skywriter
 import signal
 import thenemin_sound_functions as sound
