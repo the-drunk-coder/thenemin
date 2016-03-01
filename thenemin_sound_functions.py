@@ -36,7 +36,7 @@ def nois(*args, **kwargs):
 # dict mapping samplename to bufnum
 class sampl_info:
     graa_samples = {}
-    sample_root = "/home/nik/REPOSITORIES/thenemin/samples"
+    sample_root = os.environ['THENEMIN_ROOT'] + "/samples"
     bufnum = 0
 
 def free_samples():
@@ -49,9 +49,8 @@ def sampl(*args, **kwargs):
     """
     Play a sample or a part of it (with SC).
     """
-    folder = str(args[0])
-    name = str(args[1])
-    sample_id = folder + ":" + name
+    name = str(args[0])
+    sample_id =  name
     speed = float(kwargs.get("speed", 1.0))
     rev = float(kwargs.get("rev", 0.0))
     pan = float((kwargs.get("pan", 0.5) * 2) - 1)
@@ -76,7 +75,7 @@ def sampl(*args, **kwargs):
             synth_name="sampl"
     #print(synth_name + ":" + str(length))
     if sample_id not in sampl_info.graa_samples:
-        sample_path = sampl_info.sample_root + "/" + folder + "/" + name + ".wav"
+        sample_path = sampl_info.sample_root + "/" + name + ".wav"
         # create buffer on scsynth
         scsynth_client.sendMsg("/b_allocRead", sampl_info.bufnum, sample_path)
         sampl_info.graa_samples[sample_id] = sampl_info.bufnum
