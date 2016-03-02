@@ -80,7 +80,7 @@ def sampl(*args, **kwargs):
         scsynth_client.sendMsg("/b_allocRead", sampl_info.bufnum, sample_path)
         sampl_info.graa_samples[sample_id] = sampl_info.bufnum
         sampl_info.bufnum += 1
-    scsynth_client.sendMsg("/s_new", synth_name, -1, 0, 1, "bufnum", sampl_info.graa_samples[sample_id], "speed", speed, "rev", rev, "pan", pan, "cutoff", cutoff, "gain", gain, "start", start, "length", length)
+    scsynth_client.sendMsg("/s_new", synth_name, -1, 0, 1, "bufnum", sampl_info.graa_samples[sample_id], "speed", speed, "rev", rev, "pan", pan, "cutoff", cutoff, "gain", gain, "start", start, "length", length, "a", attack, "r", release)
 # end sampl()
 
 def buzz(*args, **kwargs):
