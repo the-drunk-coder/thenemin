@@ -17,7 +17,7 @@ sound.sampl("blip")
 @skywriter.move()
 def move(x, y, z):
   if(not block_flag):
-    print( x, y, z )
+    #print( x, y, z )
     grainlength=80+(y*200)
     sound.sampl("thenemin_sample", gain=max(0, 1.0-z), start=min(0.1 + x, 1), a=30, r=30, speed=base_speed, length=grainlength )
     block(grainlength/2000)
